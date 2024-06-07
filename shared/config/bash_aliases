@@ -1,0 +1,32 @@
+# SOURCE ENVIRONMENTAL VARIABLES FOR BASH_ALIASES
+if [[ -f "$HOME/docker/shared/config/bash_aliases.env" ]]; then
+  source $HOME/docker/shared/config/bash_aliases.env 
+fi 
+
+alias dclogs='dcrun logs -tf --tail="50" ' # usage: dclogs container_name
+alias dcup='dcrun up -d --build --remove-orphans' # up the stack
+alias dcdown='dcrun down --remove-orphans' # down the stack
+
+alias startcore='sudo docker compose --profile core -f $HOME/docker/docker-compose-$HOSTNAME.yml start'
+alias createcore='sudo docker compose --profile core -f $HOME/docker/docker-compose-$HOSTNAME.yml up -d --build --remove-orphans'
+alias stopcore='sudo docker compose --profile core -f $HOME/docker/docker-compose-$HOSTNAME.yml stop'
+# Manage "media" services as defined by profiles in docker compose
+alias stopmedia='sudo docker compose --profile media -f $HOME/docker/docker-compose-$HOSTNAME.yml stop'
+alias createmedia='sudo docker compose --profile media -f $HOME/docker/docker-compose-$HOSTNAME.yml up -d --build --remove-orphans'
+alias startmedia='sudo docker compose --profile media -f $HOME/docker/docker-compose-$HOSTNAME.yml start'
+# Manage "diwkiads" services as defined by profiles in docker compose
+alias stopdownloads='sudo docker compose --profile downloads -f $HOME/docker/docker-compose-$HOSTNAME.yml stop'
+alias createdownloads='sudo docker compose --profile downloads -f $HOME/docker/docker-compose-$HOSTNAME.yml up -d --build --remove-orphans'
+alias startdownloads='sudo docker compose --profile downloads -f $HOME/docker/docker-compose-$HOSTNAME.yml start'
+# Manage Starr apps as defined by profiles in docker compose
+alias stoparrs='sudo docker compose --profile arrs -f $HOME/docker/docker-compose-$HOSTNAME.yml stop'
+alias startarrs='sudo docker compose --profile arrs -f $HOME/docker/docker-compose-$HOSTNAME.yml start'
+alias createarrs='sudo docker compose --profile arrs -f $HOME/docker/docker-compose-$HOSTNAME.yml up -d --build --remove-orphans'
+# Manage "dbs" (database) services as defined by profiles in docker compose
+alias stopdbs='sudo docker compose --profile dbs -f $HOME/docker/docker-compose-$HOSTNAME.yml stop'
+alias createdbs='sudo docker compose --profile dbs -f $HOME/docker/docker-compose-$HOSTNAME.yml up -d --build --remove-orphans'
+alias startdbs='sudo docker compose --profile dbs -f $HOME/docker/docker-compose-$HOSTNAME.yml start'
+# Manage all docker compose
+alias stopall='sudo docker compose -f $HOME/docker/docker-compose-$HOSTNAME.yml stop'
+alias startall='sudo docker compose -f $HOME/docker/docker-compose-$HOSTNAME.yml start'
+alias createall='sudo docker compose -f $HOME/docker/docker-compose-$HOSTNAME.yml up -d --build --remove-orphans'

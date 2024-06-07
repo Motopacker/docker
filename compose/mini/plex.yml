@@ -23,12 +23,12 @@ services:
       - "32414:32414/udp"
     volumes:
       - $DOCKERDIR/appdata/plex:/config
-      - $DATADIR/data/media:/data/media # Media Folder 1
+      - $DATADIR/media:/data/media # Media Folder 1
       #- $DATADIR/data2/media:/data/media2 # Media Folder 2
       - /dev/shm:/data/transcode # Offload transcoding to RAM if you have enough RAM
     environment:
       TZ: $TZ
-      HOSTNAME: "myPlex"
+      HOSTNAME: "Plex"
       PLEX_CLAIM_FILE: /run/secrets/plex_claim # Not required initially
       PLEX_UID: $PUID
       PLEX_GID: $PGID
