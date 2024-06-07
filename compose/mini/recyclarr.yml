@@ -13,6 +13,7 @@ services:
     volumes:
       - $DOCKERDIR/appdata/recyclarr:/config
     environment:
-      TZ: $TZ 
-      RECYCLAAR_CREATE_CONFIG: true
-    user: $PUID:$PGID
+      TZ: $TZ
+      PUID: $PUID
+      PGID: $PGID 
+      RECYCLARR_CREATE_CONFIG: true
