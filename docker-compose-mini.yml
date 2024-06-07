@@ -31,8 +31,9 @@ include:
   # DOWNLOADERS
   - compose/$HOSTNAME/sabnzbd.yml
   # PVRS
-  - compose/$HOSTNAME/radaar.yml
-  - compose/$HOSTNAME/sonaar.yml
+  - compose/$HOSTNAME/radarr.yml
+  - compose/$HOSTNAME/sonarr.yml
   # COMPLEMENTARY APPS
-  - compose/$HOSTNAME/bazaar.yml
+  - compose/$HOSTNAME/bazarr.yml
   - compose/$HOSTNAME/tautulli.yml
+  - compose/$HOSTNAME/recyclarr.yml

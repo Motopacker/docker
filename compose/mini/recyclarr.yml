@@ -1,0 +1,18 @@
+services:
+  # Recyclaar - Sonaar / Radaar Profile Sync from TRaSH-Guides
+
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr
+    container_name: recyclarr
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+    # profiles: ["media", "arrs", "all"]
+    networks:
+      - default
+    volumes:
+      - $DOCKERDIR/appdata/recyclarr:/config
+    environment:
+      TZ: $TZ 
+      RECYCLAAR_CREATE_CONFIG: true
+    user: $PUID:$PGID
