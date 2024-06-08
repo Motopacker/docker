@@ -1,0 +1,22 @@
+services:
+  # Sonarr - TV Shows Management
+  # Set url_base in sonarr settings if using PathPrefix
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:develop
+    container_name: sonarr-4k
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+    # profiles: ["media", "arrs", "all"]
+    networks:
+      - default
+    ports:
+      - "8990:8990"
+    volumes:
+      - $DOCKERDIR/appdata/sonarr-4k:/config
+      - $DATADIR:/data/
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      TZ: $TZ
+      PUID: $PUID
+      PGID: $PGID

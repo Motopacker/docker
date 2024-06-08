@@ -32,7 +32,9 @@ include:
   - compose/$HOSTNAME/sabnzbd.yml
   # PVRS
   - compose/$HOSTNAME/radarr.yml
+  - compose/$HOSTNAME/radarr-4k.yml
   - compose/$HOSTNAME/sonarr.yml
+  - compose/$HOSTNAME/sonarr-4k.yml
   # COMPLEMENTARY APPS
   - compose/$HOSTNAME/bazarr.yml
   - compose/$HOSTNAME/tautulli.yml

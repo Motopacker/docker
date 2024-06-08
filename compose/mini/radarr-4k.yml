@@ -1,0 +1,21 @@
+services:
+  # Radarr - Movie management - 4K instance
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest 
+    container_name: radarr-4k
+    security_opt:
+      - no-new-privileges:true
+    restart: "no"
+    # profiles: ["media", "arrs", "all"]
+    networks:
+      - default
+    ports:
+      - "7879:7879"
+    volumes:
+      - $DOCKERDIR/appdata/radarr-4k:/config
+      - $DATADIR:/data/
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      TZ: $TZ
+      PUID: $PUID
+      PGID: $PGID

@@ -4,7 +4,7 @@ services:
   recyclarr:
     image: ghcr.io/recyclarr/recyclarr
     container_name: recyclarr
-    user: 1000:1000
+    user: $PUID:$PGID
     security_opt:
       - no-new-privileges:true
     restart: "no"
@@ -18,3 +18,4 @@ services:
       PUID: $PUID
       PGID: $PGID 
       RECYCLARR_CREATE_CONFIG: true
+      CRON_SCHEDULE: "0/5 * * * *"
