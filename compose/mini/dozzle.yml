@@ -20,9 +20,3 @@ services:
       DOCKER_HOST: tcp://socket-proxy:2375
     # volumes:
     #  - /var/run/docker.sock:/var/run/docker.sock # Use Docker Socket Proxy instead for improved security
-    labels:
-      - homepage.group=Infrastructure
-      - homepage.name=Dozzle
-      - homepage.icon=dozzle.png
-      - homepage.href=http://192.168.1.210:8080/
-      - homepage.description=Dozzle - Docker Log Viewer

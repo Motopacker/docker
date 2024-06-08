@@ -18,9 +18,3 @@ services:
       - $DOCKERDIR/appdata/portainer/data:/data # Change to local directory if you want to save/transfer config locally
     environment:
       - TZ=$TZ
-    labels:
-      - homepage.group=Infrastructure
-      - homepage.name=Portainer
-      - homepage.icon=Portainer.png
-      - homepage.href=http://192.168.1.210:9000/
-      - homepage.description=Portainer - Docker Container Manager

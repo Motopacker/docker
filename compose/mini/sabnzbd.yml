@@ -12,7 +12,7 @@ services:
     ports:
       - "8084:8080"
     volumes:
-      - /etc/localtime:/etc/localtime:ro
+      - "/etc/localtime:/etc/localtime:ro"
       - $DOCKERDIR/appdata/sabnzbd:/config
       - $DATADIR/usenet:/data/usenet
     environment:

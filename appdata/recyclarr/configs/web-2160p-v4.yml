@@ -11,8 +11,8 @@
 # Instance Definition: https://recyclarr.dev/wiki/yaml/config-reference/basic/
 sonarr:
   web-2160p-v4:
-    base_url: Put your Sonarr URL here
-    api_key: Put your API key here
+    #base_url: Put your Sonarr URL here
+    #api_key: Put your API key here
 
     include:
       # Comment out any of the following includes to disable them

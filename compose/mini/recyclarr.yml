@@ -17,5 +17,5 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID 
-      RECYCLARR_CREATE_CONFIG: true
-      CRON_SCHEDULE: "0/5 * * * *"
+      RECYCLARR_CREATE_CONFIG: false
+      CRON_SCHEDULE: "0 3 * * *"
