@@ -1,0 +1,23 @@
+services:
+  # Plex Utilities - Banner Management + Tag 4K content to prevent transcoding
+  # Add the "Untranscodable" tag to a Plex user account to prevent a user seeing 4K content
+  plex-utils:
+    image: jkirkcaldy/plex-utills
+    container_name: plex-utills
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    #profiles: ["apps", "all"]
+    networks:
+      - default
+    ports:
+      - "808:80"
+    volumes:
+      - $DOCKERDIR/appdata/plex-utils:/config
+      - $DOCKERDIR/appdata/plex-utils/logs:/logs
+      - $DATADIR/media:/films:ro
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      TZ: $TZ
+      PUID: $PUID
+      PGID: $PGID

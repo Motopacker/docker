@@ -1,0 +1,24 @@
+services:
+  # RDT-Client - Real Debrid Access
+  prowlarr:
+    image: rogerfar/rdtclient
+    container_name: rdtclient
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    #profiles: ["apps", "all"]
+    networks:
+      - default
+    ports:
+      - "6500:6500"
+    volumes:
+      - $DOCKERDIR/appdata/rdt-client:/data/db
+      - $DATADIR/torrents:/data/downloads
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      TZ: $TZ
+      PUID: $PUID
+      PGID: $PGID
+    logging:
+      driver: json-file
+      options:

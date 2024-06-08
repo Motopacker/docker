@@ -22,16 +22,21 @@ include:
   # CORE
   - compose/$HOSTNAME/socket-proxy.yml
   - compose/$HOSTNAME/portainer.yml
-  - compose/$HOSTNAME/dozzle.yml
+  # FRONTEND
   # - compose/$HOSTNAME/homepage.yml
   - compose/$HOSTNAME/heimdall.yml
   # MEDIA
   - compose/$HOSTNAME/plex.yml
+  # MEDIA REQUESTER
+  - compose/$HOSTNAME/overseerr.yml
   # MONITORING
+  - compose/$HOSTNAME/dozzle.yml
   - compose/$HOSTNAME/uptime-kuma.yml
   # DOWNLOADERS
   - compose/$HOSTNAME/sabnzbd.yml
+  - compose/$HOSTNAME/rdt-client.yml
   # PVRS
+  - compose/$HOSTNAME/prowlarr.yml
   - compose/$HOSTNAME/radarr.yml
   - compose/$HOSTNAME/radarr-4k.yml
   - compose/$HOSTNAME/sonarr.yml
@@ -40,3 +45,4 @@ include:
   - compose/$HOSTNAME/bazarr.yml
   - compose/$HOSTNAME/tautulli.yml
   - compose/$HOSTNAME/recyclarr.yml
+  - compose/$HOSTNAME/plex-utils.yml

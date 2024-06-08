@@ -1,0 +1,20 @@
+services:
+  # Overseerr - Media Request System
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    #profiles: ["apps", "all"]
+    networks:
+      - default
+    ports:
+      - "5055:5055"
+    volumes:
+      - $DOCKERDIR/appdata/overseerr:/config
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      TZ: $TZ
+      PUID: $PUID
+      PGID: $PGID
