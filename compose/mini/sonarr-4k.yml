@@ -1,7 +1,7 @@
 services:
   # Sonarr - TV Shows Management
   # Set url_base in sonarr settings if using PathPrefix
-  sonarr:
+  sonarr-4k:
     image: lscr.io/linuxserver/sonarr:develop
     container_name: sonarr-4k
     security_opt:
@@ -11,7 +11,7 @@ services:
     networks:
       - default
     ports:
-      - "8990:8990"
+      - "8990:8989"
     volumes:
       - $DOCKERDIR/appdata/sonarr-4k:/config
       - $DATADIR:/data/
