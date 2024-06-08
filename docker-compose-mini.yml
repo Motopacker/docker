@@ -24,7 +24,7 @@ include:
   - compose/$HOSTNAME/portainer.yml
   - compose/$HOSTNAME/dozzle.yml
   # - compose/$HOSTNAME/homepage.yml
-  - compose/$HOSTNAME/homepage.yml
+  - compose/$HOSTNAME/heimdall.yml
   # MEDIA
   - compose/$HOSTNAME/plex.yml
   # MONITORING
