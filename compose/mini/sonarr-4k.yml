@@ -20,3 +20,13 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.sonarr-4k-rtr.entrypoints=websecure"
+      - "traefik.http.routers.sonarr-4k-rtr.rule=Host(`sonarr-4k.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.sonarr-4k-rtr.middlewares=chain-no-auth@file"
+      # HTTP Services
+      - "traefik.http.routers.sonarr-4k-rtr.service=sonarr-4k-svc"
+      - "traefik.http.services.sonarr-4k-svc.loadbalancer.server.port=8989"

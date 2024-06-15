@@ -1,6 +1,6 @@
 services:
   # RDT-Client - Real Debrid Access
-  prowlarr:
+  rdt-client:
     image: rogerfar/rdtclient
     container_name: rdtclient
     security_opt:
@@ -22,3 +22,4 @@ services:
     logging:
       driver: json-file
       options:
+        max-size: 10m
