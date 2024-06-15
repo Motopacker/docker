@@ -8,9 +8,10 @@ services:
     restart: "no"
     # profiles: ["media", "all"]
     networks:
+      - t3_proxy
       - default
-    ports:
-      - "8181:8181"
+    #ports:
+    #  - "8181:8181"
     volumes:
       - $DOCKERDIR/appdata/tautulli/config:/config
       - $DOCKERDIR/appdata/plex/Library/Application Support/Plex Media Server/Logs:/logs:ro # For Tautulli Plex log viewer
@@ -18,3 +19,13 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.tautulli-rtr.entrypoints=websecure"
+      - "traefik.http.routers.tautulli-rtr.rule=Host(`tautulli.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.tautulli-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      # HTTP Services
+      - "traefik.http.routers.tautulli-rtr.service=tautulli-svc"
+      - "traefik.http.services.tautulli-svc.loadbalancer.server.port=8181"      

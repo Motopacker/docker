@@ -9,9 +9,10 @@ services:
     restart: unless-stopped
     #profiles: ["apps", "all"]
     networks:
+      - t3_proxy
       - default
-    ports:
-      - "808:80"
+    #ports:
+    #  - "808:80"
     volumes:
       - $DOCKERDIR/appdata/plex-utils:/config
       - $DOCKERDIR/appdata/plex-utils/logs:/logs
@@ -21,3 +22,13 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.plexutils-rtr.entrypoints=websecure"
+      - "traefik.http.routers.plexutils-rtr.rule=Host(`plexutils.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.plexutils-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      # HTTP Services
+      - "traefik.http.routers.plexutils-rtr.service=plexutils-svc"
+      - "traefik.http.services.plexutils-svc.loadbalancer.server.port=80"      

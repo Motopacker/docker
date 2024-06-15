@@ -8,9 +8,10 @@ services:
     restart: unless-stopped
     #profiles: ["apps", "all"]
     networks:
+      - t3_proxy
       - default
-    ports:
-      - "5055:5055"
+    #ports:
+    #  - "5055:5055"
     volumes:
       - $DOCKERDIR/appdata/overseerr:/config
       - "/etc/localtime:/etc/localtime:ro"
@@ -18,3 +19,13 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.overseerr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.overseerr-rtr.rule=Host(`overseerr.$DOMAINNAME_1`) || Host(`request.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.plex-rtr.middlewares=chain-no-auth@file"
+      # HTTP Services
+      - "traefik.http.routers.overseerr-rtr.service=overseerr-svc"
+      - "traefik.http.services.overseerr-svc.loadbalancer.server.port=5055"           

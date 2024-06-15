@@ -8,9 +8,10 @@ services:
     restart: unless-stopped
     #profiles: ["apps", "all"]
     networks:
+      - t3_proxy
       - default
-    ports:
-      - "9696:9696"
+    #ports:
+    #  - "9696:9696"
     volumes:
       - $DOCKERDIR/appdata/prowlarr:/config
       - "/etc/localtime:/etc/localtime:ro"
@@ -18,3 +19,13 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.prowlarr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.prowlarr-rtr.rule=Host(`prowlarr.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.prowlarr-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      # HTTP Services
+      - "traefik.http.routers.prowlarr-rtr.service=prowlarr-svc"
+      - "traefik.http.services.prowlarr-svc.loadbalancer.server.port=9696"      

@@ -10,8 +10,8 @@ services:
     networks:
       - t3_proxy
       - default
-    ports:
-      - "7879:7878"
+    #ports:
+    #  - "7879:7878"
     volumes:
       - $DOCKERDIR/appdata/radarr-4k:/config
       - $DATADIR:/data/
