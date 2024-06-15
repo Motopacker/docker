@@ -21,7 +21,7 @@ services:
       PUID: $PUID
       PGID: $PGID
     labels:
-      - "traefik.enable=true"
+      - "traefik.enable=false"
       # HTTP Routers
       - "traefik.http.routers.radarr-rtr.entrypoints=websecure"
       - "traefik.http.routers.radarr-rtr.rule=Host(`radarr.$DOMAINNAME_1`)"

@@ -20,7 +20,7 @@ services:
       PUID: $PUID
       PGID: $PGID
     labels:
-      - "traefik.enable=true"
+      - "traefik.enable=false"
       # HTTP Routers
       - "traefik.http.routers.heimdall-rtr.entrypoints=websecure"
       - "traefik.http.routers.heimdall-rtr.rule=Host(`heimdall.$DOMAINNAME_1`) || Host(`www.$DOMAINNAME_1`)"
