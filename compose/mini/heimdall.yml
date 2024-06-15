@@ -8,6 +8,7 @@ services:
     restart: unless-stopped
     #profiles: ["apps", "all"]
     networks:
+      - t3_proxy
       - default
     ports:
       - "8090:80"
@@ -18,3 +19,13 @@ services:
       TZ: $TZ
       PUID: $PUID
       PGID: $PGID
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.heimdall-rtr.entrypoints=websecure"
+      - "traefik.http.routers.heimdall-rtr.rule=Host(`heimdall.$DOMAINNAME_1`) || Host(`www.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.traefik-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      # HTTP Services
+      - "traefik.http.routers.heimdall-rtr.service=heimdall-svc"
+      - "traefik.http.services.heimdall-svc.loadbalancer.server.port=8090"        
