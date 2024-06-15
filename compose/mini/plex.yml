@@ -38,7 +38,7 @@ services:
     secrets:
       - plex_claim
     labels:
-      - "traefik.enable=true`"
+      - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.plex-rtr.entrypoints=websecure"
       - "traefik.http.routers.plex-rtr.rule=Host(`plex.$DOMAINNAME_1`)"
