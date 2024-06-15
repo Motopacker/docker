@@ -1,2 +1,7 @@
 .env
 appdata/recyclarr/secrets.yml
+secrets/cf_dns_api_token
+secrets/recyclarr/sonarr_api_key
+secrets/recyclarr/sonarr_4k_api_key
+secrets/recyclarr/radarr_api_key
+secrets/recyclarr/radarr_4k_api_key

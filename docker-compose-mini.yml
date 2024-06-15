@@ -8,11 +8,30 @@ networks:
     ipam:
       config:
         - subnet: 192.168.91.0/24
+
+  t3_proxy:
+    name: t3_proxy
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.90.0/24        
         
 ########################### SECRETS
 secrets:
   plex_claim:
     file: $DOCKERDIR/secrets/plex_claim
+  basic_auth_credentials:
+    file: $DOCKERDIR/secrets/basic_auth_credentials
+  cf_dns_api_token:
+    file: $DOCKERDIR/secrets/cf_dns_api_token
+  sonarr_api_key:
+    file: $DOCKERDIR/secrets/sonarr_api_key
+  sonarr_4k_api_key:
+    file: $DOCKERDIR/secrets/sonarr_4k_api_key
+  radarr_api_key:
+    file: $DOCKERDIR/secrets/radarr_api_key
+  radarr_4k_api_key:
+    file: $DOCKERDIR/secrets/radarr_4k_api_key
  
 include:
   ########################### SERVICES
@@ -21,6 +40,7 @@ include:
  
   # CORE
   - compose/$HOSTNAME/socket-proxy.yml
+  - compose/$HOSTNAME/traefik.yml
   - compose/$HOSTNAME/portainer.yml
   # FRONTEND
   # - compose/$HOSTNAME/homepage.yml

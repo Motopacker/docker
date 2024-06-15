@@ -10,7 +10,7 @@ services:
     networks:
       - default
     ports:
-      - "80:80"
+      - "8090:80"
     volumes:
       - $DOCKERDIR/appdata/heimdall:/config
       - "/etc/localtime:/etc/localtime:ro"
