@@ -28,4 +28,4 @@ services:
       - "traefik.http.routers.heimdall-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
       # HTTP Services
       - "traefik.http.routers.heimdall-rtr.service=heimdall-svc"
-      - "traefik.http.services.heimdall-svc.loadbalancer.server.port=8090"        
+      - "traefik.http.services.heimdall-svc.loadbalancer.server.port=80"

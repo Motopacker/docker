@@ -25,7 +25,7 @@ services:
       - "traefik.http.routers.overseerr-rtr.entrypoints=websecure"
       - "traefik.http.routers.overseerr-rtr.rule=Host(`overseerr.$DOMAINNAME_1`) || Host(`request.$DOMAINNAME_1`)"
       # Middlewares
-      - "traefik.http.routers.plex-rtr.middlewares=chain-no-auth@file"
+      - "traefik.http.routers.overseerr-rtr.middlewares=chain-no-auth@file"
       # HTTP Services
       - "traefik.http.routers.overseerr-rtr.service=overseerr-svc"
       - "traefik.http.services.overseerr-svc.loadbalancer.server.port=5055"           

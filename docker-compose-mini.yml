@@ -72,3 +72,4 @@ include:
   - compose/$HOSTNAME/recyclarr.yml
   - compose/$HOSTNAME/plex-utils.yml
   - compose/$HOSTNAME/it-tools.yml
+  - compose/$HOSTNAME/whoami.yml
