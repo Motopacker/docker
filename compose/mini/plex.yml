@@ -38,12 +38,12 @@ services:
     secrets:
       - plex_claim
     labels:
-      - "traefik.enable=false"
+      - "traefik.enable=true`"
       # HTTP Routers
       - "traefik.http.routers.plex-rtr.entrypoints=websecure"
       - "traefik.http.routers.plex-rtr.rule=Host(`plex.$DOMAINNAME_1`)"
       # Middlewares
-      - "traefik.http.routers.traefik-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      - "traefik.http.routers.plex-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
       - "traefik.http.middlewares.add-plex.addPrefix.prefix=/web"
       # HTTP Services
       - "traefik.http.routers.plex-rtr.service=plex-svc"
