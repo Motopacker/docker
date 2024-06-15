@@ -8,6 +8,17 @@ services:
     restart: unless-stopped
     # profiles: ["core", "all"]
     networks:
+      - t3_proxy
       - default
     volumes:
       - $DOCKERDIR/appdata/uptime-kuma:/app/data
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.uptime-kuma-rtr.entrypoints=websecure"
+      - "traefik.http.routers.uptime-kuma-rtr.rule=Host(`uptime-kuma.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.uptime-kuma-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      # HTTP Services
+      - "traefik.http.routers.uptime-kuma-rtr.service=uptime-kuma-svc"
+      - "traefik.http.services.uptime-kuma-svc.loadbalancer.server.port=3001"      

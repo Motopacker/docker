@@ -42,6 +42,9 @@ include:
   - compose/$HOSTNAME/socket-proxy.yml
   - compose/$HOSTNAME/traefik.yml
   - compose/$HOSTNAME/portainer.yml
+  - compose/$HOSTNAME/vs-code.yml
+  - compose/$HOSTNAME/traefik-access-log.yml
+  - compose/$HOSTNAME/traefik-error-log.yml
   # FRONTEND
   # - compose/$HOSTNAME/homepage.yml
   - compose/$HOSTNAME/heimdall.yml
@@ -68,3 +71,4 @@ include:
   - compose/$HOSTNAME/tautulli.yml
   - compose/$HOSTNAME/recyclarr.yml
   - compose/$HOSTNAME/plex-utils.yml
+  - compose/$HOSTNAME/it-tools.yml

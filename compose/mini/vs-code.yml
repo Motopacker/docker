@@ -1,0 +1,24 @@
+services:
+  # VSCode - VSCode Editing
+  vscode:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: vscode
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    # profiles: ["core", "all"]
+    networks:
+      - t3_proxy
+    volumes:
+      - $DOCKERDIR/appdata/vscode:/config
+      - /mnt/docker:/data/docker
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.vs-code-rtr.entrypoints=websecure"
+      - "traefik.http.routers.vs-code-rtr.rule=Host(`vs-code.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.vs-code-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      # HTTP Services
+      - "traefik.http.routers.vs-code-rtr.service=vs-code-svc"
+      - "traefik.http.services.vs-code-svc.loadbalancer.server.port=8443"      
