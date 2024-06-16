@@ -24,6 +24,8 @@ secrets:
     file: $DOCKERDIR/secrets/basic_auth_credentials
   cf_dns_api_token:
     file: $DOCKERDIR/secrets/cf_dns_api_token
+  postgres_default_passwd:
+    file: $DOCKERDIR/secrets/postgres_default_passwd  
   sonarr_api_key:
     file: $DOCKERDIR/secrets/sonarr_api_key
   sonarr_4k_api_key:
@@ -45,6 +47,9 @@ include:
   - compose/$HOSTNAME/vs-code.yml
   - compose/$HOSTNAME/traefik-access-log.yml
   - compose/$HOSTNAME/traefik-error-log.yml
+  # DATABASE
+  - compose/$HOSTNAME/postgres.yml
+  - compose/$HOSTNAME/adminer.yml
   # FRONTEND
   # - compose/$HOSTNAME/homepage.yml
   - compose/$HOSTNAME/heimdall.yml

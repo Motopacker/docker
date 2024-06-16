@@ -10,3 +10,4 @@ secrets/radarr_api_key
 secrets/sonarr_4k_api_key
 secrets/sonarr_api_key
 secrets/basic_auth_credentials
+secrets/postgres_default_passwd
