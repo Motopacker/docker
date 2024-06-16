@@ -9,8 +9,6 @@ services:
     #profiles: ["apps", "all"]
     environment:
       ADMINER_DEFAULT_SERVER: postgresql
-    depends on:
-      - postgresql
     networks:
       - t3_proxy
       - default

@@ -24,7 +24,7 @@ secrets:
     file: $DOCKERDIR/secrets/basic_auth_credentials
   cf_dns_api_token:
     file: $DOCKERDIR/secrets/cf_dns_api_token
-  postgres_default_passwd:
+  postgres_passwd:
     file: $DOCKERDIR/secrets/postgres_default_passwd  
   sonarr_api_key:
     file: $DOCKERDIR/secrets/sonarr_api_key
